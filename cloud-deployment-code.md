@@ -6,28 +6,28 @@ This document contains real commands and configurations used in our Pet Shop CRM
 
 ## 1. EC2 Instance Setup and Backend Deployment
 
-```bash
+```
 # Install Java 17 on Amazon Linux
 sudo dnf install java-17-amazon-corretto -y
 java -version
 ```
 
-```bash
+```
 # Upload Spring Boot JAR to EC2 instance
 scp -i "petshop_key.pem" target/crm-backend-0.0.1-SNAPSHOT.jar ec2-user@<EC2-PUBLIC-IP>:~
 ```
 
-```bash
+```
 # Run the JAR file in the background
 nohup java -jar crm-backend-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
 ```
 
-```bash
+```
 # View backend logs
 tail -f app.log
 ```
 
-```bash
+```
 # Find and terminate backend process (if needed)
 ps aux | grep java
 kill -9 <PID>
@@ -37,7 +37,7 @@ kill -9 <PID>
 
 ## 2. SSH Configuration for VS Code Remote Access
 
-```bash
+```
 # File: ~/.ssh/config
 
 Host petshop_crm
